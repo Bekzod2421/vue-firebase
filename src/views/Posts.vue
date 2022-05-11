@@ -23,7 +23,6 @@ export default {
   setup() {
     const { posts, error, load } = getPosts("posts");
     load();
-    console.log(posts.value);
     return { posts, error };
   },
 };

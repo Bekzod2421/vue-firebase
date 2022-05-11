@@ -1,8 +1,10 @@
 <template>
   <div class="post">
-    <h2>{{ posts.title }} ok</h2>
-    <p>{{ posts.text }} text</p>
-    <div class="tags" v-for="tag in posts.tags" :key="tag">{{ tag }} tag</div>
+    <router-link :to="{ name: 'PostDetail', params: { id: posts.id } }">
+      <h2>{{ posts.title }}</h2>
+    </router-link>
+    <p>{{ posts.text }}</p>
+    <div class="tags" v-for="tag in posts.tags" :key="tag">{{ tag }}</div>
   </div>
 </template>
 
