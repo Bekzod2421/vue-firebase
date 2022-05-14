@@ -20,8 +20,7 @@ export default {
   setup(props) {
     const { post, error, load } = getPost(props.id);
     load();
-    console.log(props.id);
-    console.log(post.value);
+    console.log("post", post.value);
     return { post, error };
   },
 };
