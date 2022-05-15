@@ -3,8 +3,8 @@ import { deleteDoc } from 'firebase/firestore';
 import { db } from "../firebase/config"
 
 const deletePost = (col, id) => {
-	const error1 = ref(null)
-	const loadDelete = async () => {
+	const error = ref(null)
+	const load = async () => {
 		try {
 			const res = doc(db, col, id)
 			// console.log(res);
@@ -13,11 +13,11 @@ const deletePost = (col, id) => {
 			})
 		}
 		catch (err) {
-			error1.value = err.message
+			error.value = err.message
 		}
 	}
 
-	return { error1, loadDelete }
+	return { error, load }
 }
 
 export default deletePost
