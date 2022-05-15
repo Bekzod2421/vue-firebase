@@ -1,5 +1,5 @@
 import { ref } from "@vue/reactivity";
-import { getDoc, doc, onSnapshot } from 'firebase/firestore';
+import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from "../firebase/config"
 
 const getPost = (col, id) => {
@@ -8,8 +8,10 @@ const getPost = (col, id) => {
 	const load = async () => {
 		try {
 			const res = doc(db, col, id)
+			console.log(res);
 			onSnapshot(res, (doc) => {
-				console.log("data", doc.data());
+				post.value = doc.data()
+				console.log("post", post.value);
 			})
 		}
 		catch (err) {
