@@ -22,6 +22,12 @@ const routes = [
 		name: 'PostDetail',
 		component: () => import(/* webpackChunkName: "about" */ '../views/PostDetail.vue'),
 		props: true
+	},
+	{
+		path: '/delete/:id',
+		name: 'DeletePost',
+		component: () => import(/* webpackChunkName: "about" */ '../views/DeletePost.vue'),
+		props: true
 	}
 
 ]

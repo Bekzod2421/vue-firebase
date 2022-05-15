@@ -5,6 +5,11 @@
   <div class="post-wrap" v-if="posts.length">
     <div v-for="post in posts" :key="post.id">
       <PostsList :posts="post" />
+      <router-link
+        class="delete-btn"
+        :to="{ name: 'DeletePost', params: { id: post.id } }"
+        >Delete this post</router-link
+      >
     </div>
   </div>
   <div v-else>

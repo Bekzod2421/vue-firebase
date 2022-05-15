@@ -1,15 +1,16 @@
 import { ref } from "@vue/reactivity";
-import { deleteDoc } from 'firebase/firestore';
+import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from "../firebase/config"
 
 const deletePost = (col, id) => {
+	const done = false
 	const error = ref(null)
 	const load = async () => {
 		try {
 			const res = doc(db, col, id)
-			// console.log(res);
+			console.log(id);
 			deleteDoc(res).then(() => {
-				alert("Post deleted")
+				alert("Delete")
 			})
 		}
 		catch (err) {
@@ -17,7 +18,7 @@ const deletePost = (col, id) => {
 		}
 	}
 
-	return { error, load }
+	return { done, error, load }
 }
 
 export default deletePost
