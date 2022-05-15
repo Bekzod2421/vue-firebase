@@ -28,6 +28,12 @@ const routes = [
 		name: 'DeletePost',
 		component: () => import(/* webpackChunkName: "about" */ '../views/DeletePost.vue'),
 		props: true
+	},
+	{
+		path: '/update/:id',
+		name: 'UpdatePost',
+		component: () => import(/* webpackChunkName: "about" */ '../views/UpdatePost.vue'),
+		props: true
 	}
 
 ]

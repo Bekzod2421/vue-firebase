@@ -7,31 +7,22 @@
 <script>
 import deletePost from "../composable/deletePost";
 import Spinner from "../components/Spinner.vue";
+import { useRouter } from "vue-router";
 export default {
   name: "DeletePost",
   props: ["id"],
   components: { Spinner },
   setup(props) {
+    const router = useRouter();
     console.log(props.id);
     const { done, error, load } = deletePost("posts", props.id);
-    load();
+    load().then(() => {
+      router.push({ name: "posts" });
+    });
     return { done, error };
   },
 };
 </script>
 
 <style>
-.delete-btn {
-  background-color: gray;
-  color: #fff;
-  padding: 10px 15px;
-  display: inline-block;
-  border-radius: 15px;
-  margin: 20px auto;
-  text-decoration: none;
-  font-weight: bold;
-}
-.delete-btn:hover {
-  background-color: crimson;
-}
 </style>

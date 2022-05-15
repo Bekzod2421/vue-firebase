@@ -1,23 +1,22 @@
 import { ref } from "@vue/reactivity";
-import { doc, onSnapshot } from 'firebase/firestore';
+import { updateDoc, doc } from 'firebase/firestore';
 import { db } from "../firebase/config"
 
-const getPost = (col, id) => {
-	const post = ref([])
+const undatePost = (col, id, post) => {
+	const done = false
 	const error = ref(null)
 	const load = async () => {
 		try {
 			const res = doc(db, col, id)
-			onSnapshot(res, (doc) => {
-				post.value = doc.data()
-			})
+			console.log(id);
+			updateDoc(res, { post })
 		}
 		catch (err) {
 			error.value = err.message
 		}
 	}
 
-	return { post, error, load }
+	return { done, error, load }
 }
 
-export default getPost
+export default undatePost
